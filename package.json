@@ -47,6 +47,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy":"https://tired-trousers-fish.cyclic.app/api/"
-
+  "proxy": "http://localhost:8002/api/"
 }
