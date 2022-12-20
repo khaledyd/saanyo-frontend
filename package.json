@@ -47,5 +47,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://saanyo-apis.onrender.com/api"
+  "proxy": "http://localhost:8002/api/"
 }
