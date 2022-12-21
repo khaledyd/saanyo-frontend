@@ -1,5 +1,5 @@
 import React from "react";
-import {  Box } from "@mui/system";
+import { Box } from "@mui/system";
 import { Button, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
@@ -8,12 +8,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import DoneIcon from "@mui/icons-material/Done";
-import {axiosInstance} from "../config"
-
+import { axiosInstance } from "../config";
 
 const Signup = () => {
   const { currentUser } = useSelector((state) => state.user);
-
 
   const buyerId = currentUser._id;
   const locations = useLocation();
@@ -42,21 +40,26 @@ const Signup = () => {
   const sellerid = order.userId;
   useEffect(() => {
     const fechorder = async () => {
-      const res = await axiosInstance.get(`/users/getorderbyid/${path}`);
+      const res = await axiosInstance.get(`/users/getorderbyid/${path}`, {
+        withCredentials: true,
+      });
       setOrderdata(res.data.price);
-      const sellerdata = await axiosInstance.get(`/users/find/${res.data.userId}`);
-      const buyerdata = await axiosInstance.get(`/users/find/${currentUser._id}`);
+      const sellerdata = await axiosInstance.get(
+        `/users/find/${res.data.userId}`
+      );
+      const buyerdata = await axiosInstance.get(
+        `/users/find/${currentUser._id}`,
+        {
+          withCredentials: true,
+        }
+      );
       setbalance(buyerdata.data.wallet.balance);
 
       setOrder(res.data);
     };
     fechorder();
   }, [path, currentUser._id]);
-  const handleChange = (e) => {
-    setSales((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
-  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -272,7 +275,7 @@ const Signup = () => {
                 <Typography
                   sx={{
                     width: { lg: "70%", md: "70%", sm: "100%", xs: "100%" },
-                    color:"red"
+                    color: "red",
                   }}
                 >
                   {" "}

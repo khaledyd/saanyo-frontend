@@ -51,6 +51,7 @@ const Dashboard = () => {
     };
     try {
       const res = await axiosInstance.post(`/users/createorder/${userId}`, {
+        withCredentials: true,
         data,
       });
       setIsOpen(false);
@@ -61,10 +62,13 @@ const Dashboard = () => {
   };
   useEffect(() => {
     const fechorder = async () => {
-      const res = await axiosInstance.get(`/users/getorder/${currentUser._id}`,{
-        withCredentials: true,
-      });
-      const ress = await axiosInstance.get(`/users/find/${currentUser._id}`,{
+      const res = await axiosInstance.get(
+        `/users/getorder/${currentUser._id}`,
+        {
+          withCredentials: true,
+        }
+      );
+      const ress = await axiosInstance.get(`/users/find/${currentUser._id}`, {
         withCredentials: true,
       });
       seuser(ress.data.sellerBlance);
