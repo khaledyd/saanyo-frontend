@@ -51,7 +51,6 @@ const Dashboard = () => {
     };
     try {
       const res = await axiosInstance.post(`/users/createorder/${userId}`, {
-        withCredentials: true,
         data,
       });
       setIsOpen(false);
