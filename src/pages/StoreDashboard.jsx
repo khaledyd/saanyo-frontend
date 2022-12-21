@@ -41,6 +41,7 @@ const Dashboard = () => {
     setCencel(setIsOpen(false));
   };
   const handleOrder = () => [setIsOpen(!isOpen)];
+
   const handlecrateOrder = async (e) => {
     e.preventDefault();
     const userId = currentUser._id;
@@ -51,7 +52,10 @@ const Dashboard = () => {
     };
     try {
       const res = await axiosInstance.post(`/users/createorder/${userId}`, {
-        data,
+        data: {
+          data,
+        },
+        withCredentials: true,
       });
       setIsOpen(false);
       console.log(res.data);
