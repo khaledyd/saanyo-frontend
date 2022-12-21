@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import Nav from "../components/home/Nav";
 import { useNavigate } from "react-router-dom";
+import {axiosInstance} from "../config"
 
 const Signup = () => {
   const [displayName, setdisplayName] = useState("");
@@ -23,7 +24,7 @@ const Signup = () => {
       displayName,
     };
     try {
-      const res = await axios.post("/auth/signup", data);
+      const res = await axiosInstance.post("/auth/signup", data);
       console.log(res.data);
       navigate("/login");
     } catch (err) {

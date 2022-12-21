@@ -2,12 +2,14 @@ import React from "react";
 import {  Box } from "@mui/system";
 import { Button, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-import axios from "axios";
+
 import Nav from "../components/home/Nav";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import DoneIcon from "@mui/icons-material/Done";
+import {axiosInstance} from "../config"
+
 
 const Signup = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -40,10 +42,10 @@ const Signup = () => {
   const sellerid = order.userId;
   useEffect(() => {
     const fechorder = async () => {
-      const res = await axios.get(`/users/getorderbyid/${path}`);
+      const res = await axiosInstance.get(`/users/getorderbyid/${path}`);
       setOrderdata(res.data.price);
-      const sellerdata = await axios.get(`/users/find/${res.data.userId}`);
-      const buyerdata = await axios.get(`/users/find/${currentUser._id}`);
+      const sellerdata = await axiosInstance.get(`/users/find/${res.data.userId}`);
+      const buyerdata = await axiosInstance.get(`/users/find/${currentUser._id}`);
       setbalance(buyerdata.data.wallet.balance);
 
       setOrder(res.data);
@@ -71,7 +73,7 @@ const Signup = () => {
       setError(true);
     } else {
       try {
-        const res = await axios.put(
+        const res = await axiosInstance.put(
           "/users/buysomethingnow/" + path,
 
           {

@@ -6,7 +6,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import {axiosInstance} from "../config"
 const Login = () => {
   const { currentUser } = useSelector((state) => state.user);
 
@@ -20,7 +20,7 @@ const Login = () => {
     e.preventDefault();
     if (password === confirmPassword) {
       try {
-        const res = await axios.put(`/users/${currentUser._id}`, {
+        const res = await axiosInstance.put(`/users/${currentUser._id}`, {
           userId: currentUser._id,
           password: password,
         });
