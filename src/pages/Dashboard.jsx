@@ -7,6 +7,7 @@ import Transections from "../components/dashboard/Transections";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Transectionsc from "../components/dashboard/Transectionsc";
+import { axiosInstance } from "../config";
 
 import Allnav from "./Allnav";
 
@@ -32,7 +33,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fechdata = async () => {
-      const res = await axios.get(`users/find/${currentUser._id}`);
+      const res = await axiosInstance.get(`users/find/${currentUser._id}`, {
+        withCredentials: true,
+      });
       setuserdata(res.data.wallet.balance);
 
       setsends(res.data.wallet.sends);
@@ -252,7 +255,6 @@ const Dashboard = () => {
               height: "100vh",
               backgroundColor: "#F5F5F5",
               marginTop: "50px",
- 
             }}
           >
             <Box
