@@ -18,7 +18,7 @@ const Signup = () => {
 
   const path = locations.pathname.split("/")[2];
   const [balance, setbalance] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   const [order, setOrder] = useState([]);
   const [sales, setSales] = useState([
@@ -33,7 +33,7 @@ const Signup = () => {
   const [buyerPhoneNumber, setbuyerPhoneNumber] = useState();
   const [buyerAddress, setbuyerAddress] = useState("");
   const [total, setTotal] = useState(0);
-  const [orderdata, setOrderdata] = useState({});
+  const [orderdata, setOrderdata] = useState();
   const totals = orderdata * quantity;
   console.log(totals);
 
@@ -59,7 +59,6 @@ const Signup = () => {
     };
     fechorder();
   }, [path, currentUser._id]);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
