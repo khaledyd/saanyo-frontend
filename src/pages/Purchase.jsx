@@ -21,6 +21,7 @@ const Signup = () => {
   const [error, setError] = useState(null);
 
   const [order, setOrder] = useState([]);
+  const [price ,setPrice] = useState()
   const [sales, setSales] = useState([
     {
       quantity: 1,
@@ -29,6 +30,7 @@ const Signup = () => {
   ]);
   const [seuccess, setSuccess] = useState(false);
   const [quantity, setquantity] = useState();
+  
   const [buyernme, setbuyernme] = useState("");
   const [buyerPhoneNumber, setbuyerPhoneNumber] = useState();
   const [buyerAddress, setbuyerAddress] = useState("");
@@ -42,7 +44,9 @@ const Signup = () => {
     const fechorder = async () => {
       const res = await axiosInstance.get(`/users/getorderbyid/${path}`, {
         withCredentials: true,
+
       });
+      setPrice(res.data)
       setOrderdata(res.data.price);
       const sellerdata = await axiosInstance.get(
         `/users/find/${res.data.userId}`

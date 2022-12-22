@@ -46,14 +46,12 @@ const Dashboard = () => {
     e.preventDefault();
     const userId = currentUser._id;
     console.log(userId);
-    const data = {
+    const orderdata = {
       price,
       productTitle,
     };
     try {
-      const res = await axiosInstance.post(`/users/createorder/${userId}`, {
-        data,
-      });
+      const res = await axiosInstance.post(`/users/createorder/${userId}`, orderdata);
       setIsOpen(false);
       console.log(res.data);
     } catch (err) {
