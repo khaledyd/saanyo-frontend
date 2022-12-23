@@ -18,13 +18,14 @@ const Login = () => {
 
   const chanepassword = async (e) => {
     const data = {
-      userId: currentUser._id,
+   
       password: password,
     };
     e.preventDefault();
     if (password === confirmPassword) {
       try {
         const res = await axiosInstance.put(`/users/${currentUser._id}`, data, {
+          userId: currentUser._id,
           withCredentials: true
         });
         navigate("/");
