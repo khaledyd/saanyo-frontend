@@ -23,7 +23,7 @@ const Login = () => {
         const res = await axiosInstance.put(`/users/${currentUser._id}`, {
           userId: currentUser._id,
           password: password,
-          withCredentials: true,
+
         });
         navigate("/");
    
