@@ -25,12 +25,10 @@ const Login = () => {
     if (password === confirmPassword) {
       try {
         const res = await axiosInstance.put(`/users/${currentUser._id}`, data, {
-          withCredentials: true
+          withCredentials: true,
         });
         navigate("/");
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     } else {
       setError(true);
     }
