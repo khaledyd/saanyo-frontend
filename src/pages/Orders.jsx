@@ -20,7 +20,6 @@ const Dashboard = () => {
         withCredentials: true,
       });
       setOrders(res.data);
-      console.log(res.data);
     };
     fechorder();
   }, [currentUser._id]);
