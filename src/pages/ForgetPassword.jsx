@@ -30,7 +30,7 @@ const Login = () => {
       const res = await axiosInstance.post("/auth/SendOtb", { email });
       setChange(true);
     } catch (err) {
-      console.log(err);
+  
       dispatch(loginFailure(err));
  
     }
@@ -40,6 +40,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axiosInstance.post("/auth/verify", {
+        
         email,
 
         code,
@@ -49,31 +50,31 @@ const Login = () => {
       setOneone(true);
       navigate("/Updatepassword");
 
-      console.log(res.data);
+
     } catch (err) {
-      console.log(err);
+
       setError(true);
     }
   };
 
   const useriD = user._id;
   const datas = user;
-  console.log(datas);
-  console.log(useriD);
+
   const chanepassword = async (e) => {
     e.preventDefault();
     if (password) {
       try {
         const res = await axiosInstance.put(`/users/${useriD}`, {
+          withCredentials: true,
           Id: useriD,
           password: password,
         });
-        console.log(res.data);
+  
       } catch (err) {
-        console.error(err);
+   
       }
     } else {
-      console.log("passwrod and confiirm password must be same");
+ 
     }
   };
   return (

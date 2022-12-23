@@ -25,10 +25,10 @@ const Signup = () => {
     };
     try {
       const res = await axiosInstance.post("/auth/signup", data);
-      console.log(res.data);
+
       navigate("/login");
     } catch (err) {
-      console.log(err);
+ 
       setError(true)
     }
   };

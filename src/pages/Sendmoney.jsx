@@ -48,7 +48,7 @@ const Signup = () => {
   }, [id, currentUser._id]);
 
   const balances = currentUser.wallet.balance;
-  console.log(balances);
+
   const handlesubmit = async (e) => {
     e.preventDefault();
     const wallet = {
@@ -62,11 +62,9 @@ const Signup = () => {
       ],
     };
 
-    console.log(userdata);
     if (sender.wallet.balance < amountsent) {
       setError(true);
     } else if (id !== userdata) {
-      console.log("did not receive");
       setiderror(true);
     } else {
       try {
@@ -75,9 +73,9 @@ const Signup = () => {
           wallet,
         });
         setSuccess(true);
-        console.log(res.data.wallet.sends);
+     
       } catch (err) {
-        console.log(err);
+   
       }
     }
   };

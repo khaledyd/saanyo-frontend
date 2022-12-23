@@ -10,7 +10,7 @@ import { axiosInstance } from "../config";
 
 const Signup = () => {
   const { currentUser } = useSelector((state) => state.user);
-  console.log(currentUser);
+
   const [displayName, setdisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,17 +20,18 @@ const Signup = () => {
     if (password) {
       try {
         const res = await axiosInstance.put(`/users/${currentUser._id}`, {
+          withCredentials: true,
           userId: currentUser._id,
           email: email,
           password: password,
           displayName: displayName,
         });
-        console.log(res.data);
+
       } catch (err) {
-        console.log(err);
+
       }
     } else {
-      console.log("Error");
+
     }
   };
 

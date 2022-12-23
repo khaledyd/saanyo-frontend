@@ -17,10 +17,10 @@ const Dashboard = () => {
   const [order, setOrder] = useState({});
 
   const location = useLocation();
-  console.log(location);
+
   const path = location.pathname.split("/")[2];
   const orderbalance = location.state.orderRevenue;
-  console.log(orderbalance);
+
 
   useEffect(() => {
     const fechorder = async () => {
@@ -28,13 +28,13 @@ const Dashboard = () => {
 
       });
 
-      console.log(res.data);
+    
 
       setOrder(res.data);
     };
     fechorder();
   }, [path]);
-  console.log(order);
+ 
 
   const salesdata = order.sales;
 

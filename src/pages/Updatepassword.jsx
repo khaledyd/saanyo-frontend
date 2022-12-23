@@ -1,12 +1,12 @@
 import React from "react";
-import {Box } from "@mui/system";
+import { Box } from "@mui/system";
 import { Button, TextField, Typography } from "@mui/material";
 import Nav from "../components/home/Nav";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {axiosInstance} from "../config"
+import { axiosInstance } from "../config";
 const Login = () => {
   const { currentUser } = useSelector((state) => state.user);
 
@@ -23,15 +23,16 @@ const Login = () => {
         const res = await axiosInstance.put(`/users/${currentUser._id}`, {
           userId: currentUser._id,
           password: password,
+          withCredentials: true,
         });
         navigate("/");
-        console.log(res);
+   
       } catch (err) {
-        console.error(err);
+ 
       }
     } else {
       setError(true);
-      console.log("passwrod and confiirm password must be same");
+
     }
   };
   return (

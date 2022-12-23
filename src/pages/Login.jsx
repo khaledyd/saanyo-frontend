@@ -30,7 +30,7 @@ const Login = () => {
       navigate("/");
       dispatch(loginSuccess(res.data));
     } catch (err) {
-      console.log(err);
+
       dispatch(loginFailure(err));
       setError(true);
     }

@@ -37,7 +37,7 @@ const Signup = () => {
   const [total, setTotal] = useState(0);
   const [orderdata, setOrderdata] = useState();
   const totals = orderdata * quantity;
-  console.log(totals);
+
 
   const sellerid = order.userId;
   useEffect(() => {
@@ -90,7 +90,6 @@ const Signup = () => {
         );
         setSuccess(true);
         setSales(res.data);
-        console.log(res.data);
       } catch (err) {
         console.log(err);
       }

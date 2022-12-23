@@ -40,7 +40,7 @@ const Dashboard = () => {
 
       setsends(res.data.wallet.sends);
       setreceives(res.data.wallet.receives);
-      console.log(res.data.wallet.sends);
+ 
     };
     fechdata();
   }, [currentUser._id]);

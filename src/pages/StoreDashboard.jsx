@@ -45,7 +45,7 @@ const Dashboard = () => {
   const handlecrateOrder = async (e) => {
     e.preventDefault();
     const userId = currentUser._id;
-    console.log(userId);
+
     const orderdata = {
       price,
       productTitle,
@@ -53,9 +53,9 @@ const Dashboard = () => {
     try {
       const res = await axiosInstance.post(`/users/createorder/${userId}`, orderdata);
       setIsOpen(false);
-      console.log(res.data);
+
     } catch (err) {
-      console.log(err);
+ 
     }
   };
   useEffect(() => {
@@ -71,8 +71,7 @@ const Dashboard = () => {
       });
       seuser(ress.data.sellerBlance);
       setOrders(res.data);
-      console.log(res.data);
-      console.log(ress.data);
+   
     };
     fechorder();
   }, [currentUser._id]);
