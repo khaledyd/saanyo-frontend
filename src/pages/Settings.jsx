@@ -7,8 +7,10 @@ import Nav from "../components/home/Nav";
 
 import { useSelector } from "react-redux";
 import { axiosInstance } from "../config";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const Navigate = useNavigate()
   const { currentUser } = useSelector((state) => state.user);
 
   const [displayName, setdisplayName] = useState("");
@@ -26,6 +28,7 @@ const Signup = () => {
           password: password,
           displayName: displayName,
         });
+        Navigate("/dashboard");
 
       } catch (err) {
 
