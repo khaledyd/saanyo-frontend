@@ -17,23 +17,20 @@ const Login = () => {
   const [error, setError] = useState(false);
 
   const chanepassword = async (e) => {
+    const data = {
+      userId: currentUser._id,
+      password: password,
+    };
     e.preventDefault();
     if (password === confirmPassword) {
       try {
-        const res = await axiosInstance.put(`/users/${currentUser._id}`, {
-          userId: currentUser._id,
-          password: password,
+        const res = await axiosInstance.put(`/users/${currentUser._id}`, data, {
           withCredentials: true,
-
         });
         navigate("/");
-   
-      } catch (err) {
- 
-      }
+      } catch (err) {}
     } else {
       setError(true);
-
     }
   };
   return (
