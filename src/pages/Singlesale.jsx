@@ -21,20 +21,16 @@ const Dashboard = () => {
   const path = location.pathname.split("/")[2];
   const orderbalance = location.state.orderRevenue;
 
-
   useEffect(() => {
     const fechorder = async () => {
-      const res = await axiosInstance.get(`/users/getorderbyid/${path}`, {
-
-      });
-
-    
+      const res = await axiosInstance.get(`/users/getorderbyid/${path}`, {});
 
       setOrder(res.data);
     };
     fechorder();
   }, [path]);
- 
+
+
 
   const salesdata = order.sales;
 

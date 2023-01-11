@@ -11,7 +11,7 @@ import { axiosInstance } from "../config";
 
 import Allnav from "./Allnav";
 
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 import { logout } from "../Redux/userSlice";
 

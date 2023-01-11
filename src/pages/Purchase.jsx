@@ -91,7 +91,7 @@ const Signup = () => {
         setSuccess(true);
         setSales(res.data);
       } catch (err) {
-        console.log(err);
+ 
       }
     }
   };
